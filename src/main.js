@@ -1,9 +1,6 @@
-const submitBtn = document.querySelector('.submit-btn');
+const calcularMedia = require('./scripts/calcularMedia.js');
 
-function calcularMedia(n1, n2) {
-    console.log(n1 + n2);
-    return (n1 + n2) / 2;
-}
+const submitBtn = document.querySelector('.submit-btn');
 
 function obtemInfo() {
     const form = document.querySelector('.form');
@@ -14,9 +11,13 @@ function obtemInfo() {
     return { nome, n1, n2 };
 }
 
-submitBtn.addEventListener('click', () => {
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault(); // Só para impedir que o vite dê refresh na página
+
     const {nome, n1, n2} = obtemInfo()
     const media = calcularMedia(n1, n2);
 
     alert(`O aluno ${nome} tem a média: ${media}`);
 });
+
+module.exports = calcularMedia(), obtemInfo()
