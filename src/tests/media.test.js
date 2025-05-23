@@ -22,14 +22,14 @@ describe('Testa valores negativos e fora de range', () => {
 
 describe('Testa o estado baseado na média', () => {
     test('Aluno aprovado', () => {
-        expect(resultadoAluno(10, 10)).toBe('aprovado');
+        expect(resultadoAluno(10, 10)).toStrictEqual({resultado: 'aprovado', media: 10});
     }); 
 
     test('Aluno em recuperação', () => {
-        expect(resultadoAluno(7, 6)).toBe('recuperação');
+        expect(resultadoAluno(7, 6)).toStrictEqual({resultado: 'recuperação', media: 6.5});
     }); 
 
     test('Aluno reprovado', () => {
-        expect(resultadoAluno(4, 3)).toBe('reprovado');
+        expect(resultadoAluno(4, 3)).toStrictEqual({resultado: 'reprovado', media: 3.5});
     }); 
 })

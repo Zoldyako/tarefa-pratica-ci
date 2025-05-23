@@ -25,16 +25,19 @@ export function calcularMedia(n1, n2) {
 export function resultadoAluno(n1, n2) {
 
     const media = calcularMedia(n1, n2);
+    let resultado;
 
     if (media >= 7 ) { 
-        return 'aprovado';
+        resultado = 'aprovado' 
     }
     
-    if (media >= 5) { 
-        return 'recuperação';
+    else if (media >= 5) { 
+        resultado = 'recuperação'
     }
     
     else { 
-        return 'reprovado';
+        resultado = 'reprovado' 
     }
+
+    return { resultado, media }
 }
