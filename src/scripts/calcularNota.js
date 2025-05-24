@@ -1,43 +1,35 @@
-export function validarNotas(n1, n2) {
+function validaNome(nome) {
+    if (/\d/.test(nome) || /[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/.test(nome)) {
+        return { ok: false, err: '[ERROR]: Nome contém caracteres inválidos.' };
+    } 
+
+    return { ok: true, err: null };
+}
+
+function validaNotas(n1, n2) {
+    if (isNaN(n1) || isNaN(n2)) {
+        return { ok: false, err: '[ERROR]: Nota não é um número.' };
+    }
+
     if (n1 > 10 || n2 > 10) { 
-        console.log(`ERROR: Uma das notas é maior que 10. n1:${n1} | n2:${n2}`);
-        return false; 
+        return { ok: false, err: '[ERROR]: Nota não pode ser maior que 10.' };
     }
     
     if (n1 < 0 || n2 < 0) {
-        console.log(`ERROR: Uma das notas é negativa. n1:${n1} | n2:${n2}`);
-        return false;
-    }
-
-    else { 
-        return true 
-    }
-}
-
-export function calcularMedia(n1, n2) {
-    if (!validarNotas(n1, n2)) {
-        return false;
-    }
-
-    return (n1 + n2) / 2;
-}
-
-export function resultadoAluno(n1, n2) {
-
-    const media = calcularMedia(n1, n2);
-    let resultado;
-
-    if (media >= 7 ) { 
-        resultado = 'aprovado' 
+        return { ok: false, err: '[ERROR]: Nota não pode ser negativa.' };
     }
     
-    else if (media >= 5) { 
-        resultado = 'recuperação'
-    }
-    
-    else { 
-        resultado = 'reprovado' 
-    }
-
-    return { resultado, media }
+    return { ok: true, err: null };
 }
+
+function resultadoAluno(n1, n2) {
+    const media = (n1 + n2) / 2;
+
+    if (media >= 7 ) return { resultado: 'aprovado', media };
+    
+    if (media >= 5) return { resultado: 'recuperação', media };
+    
+    return { resultado: 'reprovado', media };
+}
+
+export { validaNome, validaNotas, resultadoAluno }
