@@ -1,5 +1,5 @@
 export function obtemInfo() {
-    const form = document.querySelector('.form');
+    const form = document.querySelector('.form-container');
     const nome = form.elements['nome'].value;
     const n1 = parseFloat(form.elements['nota-1'].value);
     const n2 = parseFloat(form.elements['nota-2'].value);
