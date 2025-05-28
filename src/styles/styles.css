@@ -12,6 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100svh;
     background-color: black;
     color: whitesmoke;
@@ -88,5 +89,5 @@ form {
 }
 
 .error {
-    display: none;
+    color: red;
 }
