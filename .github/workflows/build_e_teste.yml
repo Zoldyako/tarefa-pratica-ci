@@ -30,7 +30,7 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test -- --covarage
+    - run: npm test -- --coverage
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v5
       env:
